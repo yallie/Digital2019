@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Layout, Menu, Breadcrumb, Icon } from 'antd'
+import SampleChart from './SampleChart';
 
 const { SubMenu } = Menu
 const { Header, Content, Sider } = Layout
@@ -92,7 +93,7 @@ export default function MainPage() {
                     minHeight: 280,
                 }}
                 >
-                Content123
+                <SampleChart />
                 </Content>
             </Layout>
             </Layout>
