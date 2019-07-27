@@ -25,8 +25,8 @@ export default function MainPage() {
                 selectedKeys={navSection}
                 style={{ lineHeight: '64px' }}
             >
-                <Menu.Item key="1" onClick={setSection('Sample')}>Sample</Menu.Item>
-                <Menu.Item key="2" onClick={setSection('Optimizer')}>Optimizer</Menu.Item>
+                <Menu.Item key="Sample" onClick={setSection('Sample')}>Sample</Menu.Item>
+                <Menu.Item key="Optimizer" onClick={setSection('Optimizer')}>Optimizer</Menu.Item>
             </Menu>
             </Header>
             <Layout>
