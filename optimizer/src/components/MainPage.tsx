@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import { Layout, Menu, Breadcrumb, Icon } from 'antd'
 import SampleChart from './SampleChart';
+import OptimizerChart from './OptimizerChart';
 
 const { SubMenu } = Menu
 const { Header, Content, Sider } = Layout
 
+type TopNav = "Sample" | "Optimizer"
+
 export default function MainPage() {
     const [navSection, setNavSection] = useState(['1'])
-    const setSection = (item: string) => () => {
+    const setSection = (item: TopNav) => () => {
         console.log('set top section: ' + item)
         setNavSection([item])
     }
@@ -22,9 +25,8 @@ export default function MainPage() {
                 selectedKeys={navSection}
                 style={{ lineHeight: '64px' }}
             >
-                <Menu.Item key="1" onClick={setSection('1')}>nav 1</Menu.Item>
-                <Menu.Item key="2" onClick={setSection('2')}>nav 2</Menu.Item>
-                <Menu.Item key="3" onClick={setSection('3')}>nav 3</Menu.Item>
+                <Menu.Item key="1" onClick={setSection('Sample')}>Sample</Menu.Item>
+                <Menu.Item key="2" onClick={setSection('Optimizer')}>Optimizer</Menu.Item>
             </Menu>
             </Header>
             <Layout>
@@ -93,7 +95,8 @@ export default function MainPage() {
                     minHeight: 280,
                 }}
                 >
-                <SampleChart />
+                { (navSection[0] === 'Sample') && <SampleChart /> }
+                { (navSection[0] === 'Optimizer') && <OptimizerChart /> }
                 </Content>
             </Layout>
             </Layout>

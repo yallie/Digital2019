@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Chart, Geom, Axis, Tooltip, Legend, Coord } from 'bizcharts';
+import { Chart, Geom, Axis, Tooltip, Legend } from 'bizcharts';
 
 const data = [
   { genre: 'Sports', sold: 275, income: 2300 },
