@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Layout, Menu, Breadcrumb, Icon } from 'antd'
 
 const { SubMenu } = Menu
 const { Header, Content, Sider } = Layout
 
 export default function MainPage() {
+    const [navSection, setNavSection] = useState(['1'])
+    const setSection = (item: string) => () => {
+        console.log('set top section: ' + item)
+        setNavSection([item])
+    }
+
     return (
         <Layout>
             <Header className="header">
@@ -12,12 +18,12 @@ export default function MainPage() {
             <Menu
                 theme="dark"
                 mode="horizontal"
-                defaultSelectedKeys={['2']}
+                selectedKeys={navSection}
                 style={{ lineHeight: '64px' }}
             >
-                <Menu.Item key="1">nav 1</Menu.Item>
-                <Menu.Item key="2">nav 2</Menu.Item>
-                <Menu.Item key="3">nav 3</Menu.Item>
+                <Menu.Item key="1" onClick={setSection('1')}>nav 1</Menu.Item>
+                <Menu.Item key="2" onClick={setSection('2')}>nav 2</Menu.Item>
+                <Menu.Item key="3" onClick={setSection('3')}>nav 3</Menu.Item>
             </Menu>
             </Header>
             <Layout>
