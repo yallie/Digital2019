@@ -55,15 +55,15 @@ create table companies
 -- Единицы техники у предприятий
 create table company_vehicles
 (
-	company_id not null references companies(id),
-	vehicle_id not null references vehicles(id)
+	company_id int not null references companies(id),
+	vehicle_id int not null references vehicles(id)
 );
 
 -- Единицы оборудования у предприятий
 create table company_equipment
 (
-	company_id not null references companies(id),
-	equipment_id not null references equipment_units(id)
+	company_id int not null references companies(id),
+	equipment_id int not null references equipment_units(id)
 );
 
 -- Шаблоны задач: уборка террирории
@@ -78,17 +78,18 @@ create table template_tasks
 create table template_operations
 (
 	id serial not null primary key,
-	template_task_id not null references template_tasks(id),
+	template_task_id int not null references template_tasks(id),
 	name varchar not null,
 	vehicle_type_id int references vehicle_types(id), -- необязательно (=любой годный транспорт)
 	equipment_type_id int references equipment_types(id), -- необязательно (например, нужен только грузовик)
-	speed number not null -- скорость (время уборки единицы площади)
+	speed numeric not null -- скорость (время уборки единицы площади)
 );
 
 -- Задачи: уборка территории завода ЗИЛ
 create table tasks
 (
 	id serial not null primary key,
-	template_task_id not null references template_tasks(id),
-	name varchar not null,
+	template_task_id int not null references template_tasks(id),
+	name varchar not null
 );
+
