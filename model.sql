@@ -80,6 +80,7 @@ create table template_operations
 	id serial not null primary key,
 	template_task_id int not null references template_tasks(id),
 	name varchar not null,
+	order_number int not null default 1,
 	vehicle_type_id int references vehicle_types(id), -- необязательно (=любой годный транспорт)
 	equipment_type_id int references equipment_types(id), -- необязательно (например, нужен только грузовик)
 	speed numeric not null -- скорость (время уборки единицы площади)
@@ -90,6 +91,17 @@ create table tasks
 (
 	id serial not null primary key,
 	template_task_id int not null references template_tasks(id),
-	name varchar not null
+	name varchar not null, 
+	date timestamptz(0) not null default current_timestamp,
+	quantity numeric not null
 );
 
+-- Операции: чистка главной площади территории завода ЗИЛ, например
+create table operations
+(
+	id serial not null primary key,
+	task_id int not null references tasks(id),
+	order_number int not null default 1,
+	template_operation_id int not null references template_operations(id),
+	name varchar not null
+);
