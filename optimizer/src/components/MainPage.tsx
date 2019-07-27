@@ -86,7 +86,7 @@ export default function MainPage() {
                     minHeight: 280,
                 }}
                 >
-                Content
+                Content123
                 </Content>
             </Layout>
             </Layout>
