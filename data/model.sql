@@ -79,7 +79,6 @@ create table template_operations
 (
 	id serial not null primary key,
 	name varchar not null,
-	order_number int not null default 1,
 	vehicle_type_id int references vehicle_types(id), -- необязательно (=любой годный транспорт)
 	equipment_type_id int references equipment_types(id), -- необязательно (например, нужен только грузовик)
 	speed numeric not null -- скорость (время уборки единицы площади)
