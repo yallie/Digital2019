@@ -66,7 +66,7 @@ create table company_equipment
 	equipment_id int not null references equipment_units(id)
 );
 
--- Шаблоны задач: уборка террирории
+-- Шаблоны задач: например, уборка террирории
 create table template_tasks
 (
 	id serial not null primary key,
@@ -78,12 +78,19 @@ create table template_tasks
 create table template_operations
 (
 	id serial not null primary key,
-	template_task_id int not null references template_tasks(id),
 	name varchar not null,
 	order_number int not null default 1,
 	vehicle_type_id int references vehicle_types(id), -- необязательно (=любой годный транспорт)
 	equipment_type_id int references equipment_types(id), -- необязательно (например, нужен только грузовик)
 	speed numeric not null -- скорость (время уборки единицы площади)
+);
+
+-- Шаблонные операции в задачах
+create table template_task_operations
+(
+	template_task_id int not null references template_tasks(id),
+	template_operation_id int not null references template_operations(id),
+	order_number int not null default 1
 );
 
 -- Задачи: уборка территории завода ЗИЛ
