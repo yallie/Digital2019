@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { Layout, Menu, Breadcrumb, Icon } from 'antd'
 import SampleChart from './SampleChart';
 import OptimizerChart from './OptimizerChart';
+import GroupedChart from './GroupedChart';
 
 const { SubMenu } = Menu
 const { Header, Content, Sider } = Layout
 
-type TopNav = "Sample" | "Optimizer"
+type TopNav = "Sample" | "Optimizer" | "Grouped"
 
 export default function MainPage() {
     const [navSection, setNavSection] = useState(['1'])
@@ -27,6 +28,7 @@ export default function MainPage() {
             >
                 <Menu.Item key="Sample" onClick={setSection('Sample')}>Sample</Menu.Item>
                 <Menu.Item key="Optimizer" onClick={setSection('Optimizer')}>Optimizer</Menu.Item>
+                <Menu.Item key="Grouped" onClick={setSection('Grouped')}>Grouped</Menu.Item>
             </Menu>
             </Header>
             <Layout>
@@ -97,6 +99,7 @@ export default function MainPage() {
                 >
                 { (navSection[0] === 'Sample') && <SampleChart /> }
                 { (navSection[0] === 'Optimizer') && <OptimizerChart /> }
+                { (navSection[0] === 'Grouped') && <GroupedChart /> }
                 </Content>
             </Layout>
             </Layout>
